@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Emmanuel Chukwuka — Designer & Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0C0C0C;--off:#111111;--card:#161616;--border:#252525;--gold:#C9A84C;--gold2:#F0D080;--cream:#F5F0E8;--white:#FFFFFF;--muted:#888888;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 6%;background:rgba(12,12,12,0.95);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:7px 18px;border-radius:2px}
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.25;pointer-events:none}
+.hero-content{position:relative;max-width:760px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:0.76rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:6px 14px;border-radius:2px;margin-bottom:28px}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero-name{font-family:var(--serif);font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:1.0;color:var(--white);margin-bottom:6px}
+.hero-name span{color:var(--gold);font-style:italic}
+.hero-title{font-family:var(--serif);font-size:clamp(1rem,2.5vw,1.6rem);font-weight:300;font-style:italic;color:var(--muted);margin-bottom:24px}
+.hero-desc{font-size:0.93rem;color:#aaa;max-width:500px;line-height:1.85;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--black);padding:13px 30px;font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.3s}
+.btn-primary:hover{background:var(--gold2)}
+.btn-outline{background:transparent;color:var(--cream);padding:13px 30px;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color 0.3s,color 0.3s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:56px;padding-top:36px;border-top:1px solid var(--border)}
+.stat-num{font-family:var(--serif);font-size:2.6rem;font-weight:600;color:var(--gold);line-height:1}
+.stat-label{font-size:0.76rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
+section{padding:90px 6%}
+.section-label{font-size:0.73rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.section-title{font-family:var(--serif);font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:16px}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-sub{font-size:0.9rem;color:var(--muted);max-width:500px;line-height:1.85}
+#services{background:var(--off)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:50px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px}
+.service-card{background:var(--card);padding:36px 28px;border:1px solid var(--border);transition:border-color 0.3s,transform 0.3s;position:relative;overflow:hidden}
+.service-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-3px)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:46px;height:46px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:20px}
+.service-title{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--white);margin-bottom:10px}
+.service-desc{font-size:0.86rem;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.service-tags{display:flex;flex-wrap:wrap;gap:5px}
+.service-tag{font-size:0.7rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.25);padding:3px 9px;border-radius:2px}
+#portfolio{background:var(--black)}
+.portfolio-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:50px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px}
+.portfolio-item{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--card);border:1px solid var(--border);display:block;text-decoration:none}
+.portfolio-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;background:linear-gradient(135deg,var(--card) 0%,#1e1e1e 100%);transition:transform 0.4s}
+.portfolio-item:hover .portfolio-placeholder{transform:scale(1.03)}
+.portfolio-icon{font-size:2.4rem}
+.portfolio-item-label{font-size:0.76rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.6}
+.portfolio-url{font-size:0.7rem;color:var(--gold);letter-spacing:0.05em;margin-top:4px;text-align:center}
+.portfolio-overlay{position:absolute;inset:0;background:rgba(201,168,76,0.93);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px;opacity:0;transition:opacity 0.3s}
+.portfolio-item:hover .portfolio-overlay{opacity:1}
+.portfolio-overlay-title{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--black);text-align:center}
+.portfolio-overlay-sub{font-size:0.76rem;letter-spacing:0.07em;text-transform:uppercase;color:rgba(0,0,0,0.6);text-align:center}
+.visit-btn{margin-top:8px;background:var(--black);color:var(--gold);font-size:0.73rem;letter-spacing:0.1em;text-transform:uppercase;padding:7px 18px;border-radius:2px;font-weight:500}
+#testimonial{background:var(--black);padding:70px 6%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.testimonial-quote{font-family:var(--serif);font-size:clamp(1.3rem,3vw,2rem);font-style:italic;font-weight:300;color:var(--white);max-width:780px;margin:0 auto 20px;line-height:1.55}
+.testimonial-author{font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)}
+#about{background:var(--off)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-box{aspect-ratio:3/4;background:linear-gradient(135deg,#1a1a1a 0%,#0f0f0f 100%);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.about-box::before{content:'EC';font-family:var(--serif);font-size:8rem;font-weight:600;color:rgba(201,168,76,0.07);position:absolute}
+.about-badge{position:absolute;bottom:-16px;right:-16px;background:var(--gold);color:var(--black);padding:18px 22px;text-align:center;border-radius:2px}
+.about-badge-num{font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1}
+.about-badge-text{font-size:0.7rem;letter-spacing:0.07em;text-transform:uppercase;font-weight:500}
+.about-intro{font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--white);line-height:1.5;margin-bottom:20px}
+.about-text{font-size:0.88rem;color:#aaa;line-height:1.9;margin-bottom:14px}
+.about-skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+.about-skill{font-size:0.76rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--cream);border:1px solid var(--border);padding:5px 13px;border-radius:2px;transition:border-color 0.3s,color 0.3s}
+.about-skill:hover{border-color:var(--gold);color:var(--gold)}
+#contact{background:var(--off)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.contact-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:28px}
+.contact-icon{width:42px;height:42px;flex-shrink:0;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.contact-item-title{font-size:0.73rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.contact-item-val{font-size:0.9rem;color:var(--cream)}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group label{font-size:0.73rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.form-group input,.form-group textarea{background:var(--card);border:1px solid var(--border);color:var(--cream);padding:11px 14px;font-family:var(--sans);font-size:0.88rem;border-radius:2px;outline:none;transition:border-color 0.3s;resize:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{min-height:110px}
+.form-submit{background:var(--gold);color:var(--black);padding:13px;font-family:var(--sans);font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:background 0.3s}
+.form-submit:hover{background:var(--gold2)}
+footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-logo{font-family:var(--serif);font-size:1.15rem;color:var(--gold);font-weight:600}
+.footer-copy{font-size:0.78rem;color:var(--muted)}
+.footer-links{display:flex;gap:22px}
+.footer-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold)}
+@media(max-width:768px){nav{padding:14px 5%}.nav-links{display:none}section{padding:60px 5%}.about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}.about-box{display:none}.form-row{grid-template-columns:1fr}.hero-stats{gap:24px}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Emmanuel Chukwuka</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for Remote Work Worldwide</div>
+    <h1 class="hero-name">Emmanuel<br/><span>Chukwuka</span></h1>
+    <p class="hero-title">Graphic Designer &nbsp;·&nbsp; Brand Identity Designer &nbsp;·&nbsp; Web Developer</p>
+    <p class="hero-desc">I help businesses and entrepreneurs build powerful visual identities and high-converting digital presences — from AI-powered logos and full brand packages to responsive websites, crafted with precision and purpose.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="https://wa.link/qjvoko" target="_blank" rel="noopener noreferrer" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-num">50+</div><div class="stat-label">Logos Designed</div></div>
+      <div><div class="stat-num">5+</div><div class="stat-label">Websites Deployed</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label">Freelance Platforms</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="services-header">
+    <div><p class="section-label">What I Do</p><h2 class="section-title">Services I <em>Offer</em></h2></div>
+    <p class="section-sub">End-to-end creative and digital services tailored to help your brand grow and stand out.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">🎨</div><h3 class="service-title">Logo Design</h3><p class="service-desc">Memorable, versatile logos crafted to reflect your brand's unique identity — delivered in all formats for print and digital.</p><div class="service-tags"><span class="service-tag">Business Logos</span><span class="service-tag">Personal Brands</span><span class="service-tag">Monograms</span></div></div>
+    <div class="service-card"><div class="service-icon">✦</div><h3 class="service-title">Brand Identity</h3><p class="service-desc">Complete brand packages including logo, colour palette, typography, brand guidelines, and stationery.</p><div class="service-tags"><span class="service-tag">Brand Kit</span><span class="service-tag">Guidelines</span><span class="service-tag">Stationery</span></div></div>
+    <div class="service-card"><div class="service-icon">📱</div><h3 class="service-title">Social Media Design</h3><p class="service-desc">Eye-catching graphics, post templates, story designs, and promotional creatives built to boost engagement.</p><div class="service-tags"><span class="service-tag">Post Templates</span><span class="service-tag">Story Graphics</span><span class="service-tag">Banners</span></div></div>
+    <div class="service-card"><div class="service-icon">💻</div><h3 class="service-title">Web Development</h3><p class="service-desc">Responsive, modern websites and landing pages built with React — fast, functional, and built to convert.</p><div class="service-tags"><span class="service-tag">React.js</span><span class="service-tag">Landing Pages</span><span class="service-tag">Netlify</span></div></div>
+    <div class="service-card"><div class="service-icon">📖</div><h3 class="service-title">eBook & Cover Design</h3><p class="service-desc">Professional eBook covers and book cover designs that make a strong first impression and communicate quality.</p><div class="service-tags"><span class="service-tag">eBook Covers</span><span class="service-tag">Book Covers</span><span class="service-tag">Print Design</span></div></div>
+    <div class="service-card"><div class="service-icon">🤖</div><h3 class="service-title">AI-Powered Design</h3><p class="service-desc">Leveraging Google AI Studio and Gemini to deliver faster, more innovative design solutions without compromising quality.</p><div class="service-tags"><span class="service-tag">AI Workflow</span><span class="service-tag">Gemini API</span><span class="service-tag">Fast Delivery</span></div></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div><p class="section-label">My Work</p><h2 class="section-title">Selected <em>Projects</em></h2></div>
+    <p class="section-sub">A collection of brand identities, logos, and websites delivered for real clients.</p>
+  </div>
+  <div class="portfolio-grid">
+    <a class="portfolio-item" href="https://docs.google.com/document/d/16H9AcvabCyMbWELJUjsJrw87okpzIIpolCY4yQ682Mo/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+      <div class="portfolio-placeholder"><div class="portfolio-icon">🏷️</div><div class="portfolio-item-label">Logo Design Collection<br/>Business & Personal Branding</div><div class="portfolio-url">View Logo Collection ↗</div></div>
+      <div class="portfolio-overlay"><div class="portfolio-overlay-title">Logo Design Collection</div><div class="portfolio-overlay-sub">Business · Personal · Branding</div><div class="visit-btn">View Collection ↗</div></div>
+    </a>
+    <a class="portfolio-item" href="https://tochukwu-luxury-fabric.netlify.app" target="_blank" rel="noopener noreferrer">
+      <div class="portfolio-placeholder"><div class="portfolio-icon">👗</div><div class="portfolio-item-label">Tochukwu Luxury Fabrics<br/>Website & Brand Identity</div><div class="portfolio-url">tochukwu-luxury-fabric.netlify.app ↗</div></div>
+      <div class="portfolio-overlay"><div class="portfolio-overlay-title">Tochukwu Luxury Fabrics</div><div class="portfolio-overlay-sub">Website · Brand Identity</div><div class="visit-btn">Visit Website ↗</div></div>
+    </a>
+    <a class="portfolio-item" href="https://02-best-solar.netlify.app/" target="_blank" rel="noopener noreferrer">
+      <div class="portfolio-placeholder"><div class="portfolio-icon">☀️</div><div class="portfolio-item-label">Gilbert Solar Enterprise<br/>Landing Page & Branding</div><div class="portfolio-url">02-best-solar.netlify.app ↗</div></div>
+      <div class="portfolio-overlay"><div class="portfolio-overlay-title">Gilbert Solar Enterprise</div><div class="portfolio-overlay-sub">Landing Page · Branding</div><div class="visit-btn">Visit Website ↗</div></div>
+    </a>
+    <a class="portfolio-item" href="https://emmasonadvert-agency.netlify.app/" target="_blank" rel="noopener noreferrer">
+      <div class="portfolio-placeholder"><div class="portfolio-icon">📢</div><div class="portfolio-item-label">Emmason Advertising Agency<br/>Website & Identity</div><div class="portfolio-url">emmasonadvert-agency.netlify.app ↗</div></div>
+      <div class="portfolio-overlay"><div class="portfolio-overlay-title">Emmason Advertising Agency</div><div class="portfolio-overlay-sub">Website · Identity Design</div><div class="visit-btn">Visit Website ↗</div></div>
+    </a>
+    <a class="portfolio-item" href="https://docs.google.com/document/d/1jZLGB8BAc1o7qE_R6seL6kKaQS7IUDJO0jW26j6Ve4Y/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+      <div class="portfolio-placeholder"><div class="portfolio-icon">📱</div><div class="portfolio-item-label">Social Media Creatives<br/>Multi-brand Campaign</div><div class="portfolio-url">View Social Media Work ↗</div></div>
+      <div class="portfolio-overlay"><div class="portfolio-overlay-title">Social Media Campaigns</div><div class="portfolio-overlay-sub">Instagram · Facebook · LinkedIn</div><div class="visit-btn">View Collection ↗</div></div>
+    </a>
+    <a class="portfolio-item" href="https://docs.google.com/document/d/1XYPvDHmoxJtGlEQJt1dnCtwlI1VKQl6zxTkaZ3F-fpI/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+      <div class="portfolio-placeholder"><div class="portfolio-icon">📚</div><div class="portfolio-item-label">eBook & Book Cover Designs<br/>Digital Publications</div><div class="portfolio-url">View eBook Collection ↗</div></div>
+      <div class="portfolio-overlay"><div class="portfolio-overlay-title">eBook & Book Covers</div><div class="portfolio-overlay-sub">Digital · Print Publications</div><div class="visit-btn">View Collection ↗</div></div>
+    </a>
+  </div>
+</section>
+
+<div id="testimonial">
+  <p class="testimonial-quote">Emmanuel delivered exactly what our brand needed — a logo that truly represents who we are. Professional, fast, and creative. Highly recommended.</p>
+  <p class="testimonial-author">— Satisfied Client, Lagos Nigeria</p>
+</div>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-box">
+        <div class="about-badge"><div class="about-badge-num">3+</div><div class="about-badge-text">Years of<br/>Experience</div></div>
+      </div>
+    </div>
+    <div class="about-content">
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">The Designer<br/><em>Behind the Work</em></h2>
+      <p class="about-intro">"I turn brand visions into visual realities that communicate, connect, and convert."</p>
+      <p class="about-text">I'm Emmanuel Chukwuka, a creative freelance designer and web developer based in Lagos, Nigeria, with over 3 years of hands-on experience helping businesses and entrepreneurs build strong, memorable brands.</p>
+      <p class="about-text">As the founder of <strong style="color:var(--gold)">Emmason Designs</strong>, I've delivered 50+ logo designs, multiple brand identity packages, social media creatives, and fully deployed websites for clients across different industries.</p>
+      <p class="about-text">I'm available for remote freelance projects, full-time roles, and long-term creative partnerships worldwide.</p>
+      <div class="about-skills">
+        <span class="about-skill">Adobe Illustrator</span><span class="about-skill">Photoshop</span><span class="about-skill">Canva</span><span class="about-skill">Figma</span><span class="about-skill">React.js</span><span class="about-skill">Google AI Studio</span><span class="about-skill">Netlify</span><span class="about-skill">GitHub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div style="text-align:center;margin-bottom:56px">
+    <p class="section-label">Let's Work Together</p>
+    <h2 class="section-title">Get In <em>Touch</em></h2>
+    <p class="section-sub" style="margin:0 auto">Have a project in mind? Send me a message and let's create something great together.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-title">Email</div><div class="contact-item-val"><a href="mailto:chukwukae44@gmail.com">chukwukae44@gmail.com</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-title">Phone / WhatsApp</div><div class="contact-item-val">+2349061626157</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-title">Location</div><div class="contact-item-val">Lagos, Nigeria · Available Worldwide</div></div></div>
+      <div class="contact-item"><div class="contact-icon">⚡</div><div><div class="contact-item-title">Freelance Platforms</div><div class="contact-item-val">Fiverr · Upwork · PeoplePerHour</div></div></div>
+    </div>
+    <div>
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact" />
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Smith" required/></div>
+          <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="john@example.com" required/></div>
+        </div>
+        <div class="form-group"><label>Project Type</label><input type="text" name="project_type" placeholder="Logo Design, Brand Identity, Website..."/></div>
+        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project..."></textarea></div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Emmanuel Chukwuka</div>
+  <div class="footer-copy">© 2025 Emmason Designs. All rights reserved.</div>
+  <div class="footer-links"><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('.form-submit');
+  var originalText = "Send Message →";
+  
+  btn.textContent = 'Sending...';
+  
+  var formData = new FormData(form);
+  
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(function() {
+    btn.textContent = '✓ Message Sent';
+    form.reset();
+    setTimeout(function() { btn.textContent = originalText; }, 3000);
+  })
+  .catch(function(error) {
+    btn.textContent = 'Error';
+    console.error(error);
+  });
+}
+</script>
+</body>
+</html>
